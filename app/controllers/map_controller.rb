@@ -10,6 +10,7 @@ class MapController < ApplicationController
 
 	def show
 		@trip = Trip.find(params[:id])
+		@taken_dates = @trip.taken_dates.map{|date| date.strftime("%_m-%e-%Y").strip}
 		@tripId = params[:id]
 		@place = Trip.find(params[:id]).places
 		@markerData = []

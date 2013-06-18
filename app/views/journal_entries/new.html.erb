@@ -1,9 +1,8 @@
-<article class="base-modal modal-result">
-<section class="journal_entry">
-	<%= form_for ([@trip, @place, @journal_entry]) do |form| %>
-	<%= form.text_field :title, :placeholder => 'journal entry title' %>
-	<%= form.text_area :post, :placeholder => 'journal entry' %>
-	<%= form.submit "Submit Journal Entry", :class => 'btn btn-block btn-primary' %>
-	<% end %>
-</section>
-</article>
+
+  <section class="journal_entry">
+  	<%= form_for ([@trip, @place, @place.journal_entries.build]) do |form| %>
+  	<%= form.text_field :title, :placeholder => 'journal entry title' %>
+  	<%= form.text_area :post, :placeholder => 'journal entry' %>
+  	<%= form.submit "Submit Journal Entry", :class => 'btn btn-block btn-primary' %>
+  	<% end %>
+  </section>

@@ -1,19 +1,57 @@
-<article class="base-modal place-modal modal-result">
-    <header>
-      <h1>Boom Boom</h1>
-      <h2><%= @place.place %> was added...</h2>
-    </header>
-    <section class="clear-fix date-block">
-      <h2>You arrived on <span><%= @place.start_date %></span></h2>
-      <h2>you left on <span><%= @place.end_date %></span></h2>
-      <h3>Oh, and if you want to know the coordinates, here they are!!</h3>
-      <ul class="unstyled">
-        <li>Latitude is: <span><%= @place.latitude %></span></li>
-        <li>Longitude is: <span><%= @place.longitude %></span></li>
-      </ul>
-    </section>
-</article>
+<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 
-<section class="trip-title">
-  <h3>Places visited during the <%= @trip.name %> trip</h3>
+<section class="clear-fix media-page">
+
+  <header class="media-page-header">
+    <section class="media-details">
+      <h1><%= @trip.name %> - <%= @place.place %></h1>
+    </section>
+
+    <nav>
+      <a class="btn btn-primary add-entry">Add Journal Entry</a>
+      <a class="btn btn-info add-photo">Add Photos</a>
+    </nav>
+  </header>
+
+  <section class="media-page-body">
+    <article class="add-entry-template">
+      <%= render :template => "journal_entries/new" %>
+    </article>
+    <article class="journal-entries-template">
+      <%- @place.journal_entries.each do |entry| %>
+        <section class="journal_post">
+          <section class="journal_post_title">
+            <%= entry.title %>
+          </section>
+          <section class="journal_post_content">
+            <%= entry.post %>
+          </section>
+        </section>
+      <% end %>
+    </article>
+    <article class="photo-album-template">
+      <section class="photo-holder">
+          <img src="/../masking_tape.png" class="tape-effect" />
+      </section>
+      <section class="photo-holder">
+          <img src="/../masking_tape.png" class="tape-effect" />
+      </section>
+      <section class="photo-holder">
+          <img src="/../masking_tape.png" class="tape-effect" />
+      </section>
+      <section class="photo-holder">
+          <img src="/../masking_tape.png" class="tape-effect" />
+      </section>
+    </article>
+  </section>
 </section>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".add-entry-template").hide();
+    $('.add-entry').click(function(){
+      $(".add-entry-template").slideToggle();
+      });
+  });
+</script>

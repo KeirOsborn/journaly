@@ -6,6 +6,7 @@ class PlacesController < ApplicationController
 
 	def new
 		@trip = Trip.find(params[:trip_id])
+		@available = Trip.available
 	end
 
 	def create
@@ -29,7 +30,6 @@ class PlacesController < ApplicationController
 	def show
 		@trip = Trip.find(params[:trip_id])
 		@place = Place.find(params[:id])
-		@places = Place.all
 	end
 
 end

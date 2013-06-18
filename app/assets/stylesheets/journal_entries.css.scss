@@ -1,3 +1,59 @@
-// Place all the styles related to the journal_entries controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* styling for journal entry form */
+
+.add-entry-template {
+  z-index: 10;
+}
+
+#new_journal_entry {
+    background: rgba(0, 0, 0, 1);
+    border-radius: 10px;
+
+  #journal_entry_title {
+    width: 96%;
+    margin: 2%;
+  }
+
+  #journal_entry_post {
+    margin: 2%;
+    width: 96%;
+  }
+
+  .btn-block {
+    width: 96%;
+    margin-top: 2%;
+    margin-left: 2%;
+    font-size: 12px;
+  }
+}
+
+.journal_post {
+    float: left;
+    width: 48%;
+    margin: 1%;
+    height: 253px;
+    background: url("journal-entry-background.png") center center;
+    background-size: cover;
+
+    .journal_post_title, .journal_post_content {
+      -webkit-transform: rotate(-4deg);
+      -moz-transform: rotate(-4deg);
+      -ms-transform: rotate(-4deg);
+      -o-transform: rotate(-4deg);
+      width: 96%;
+      padding: 2%;
+      font-family: Cookie;
+    }
+
+    .journal_post_title {
+      text-align: center;
+      text-decoration: underline;
+      margin-top: 15%;
+      font-size: 20px;
+    }
+
+    .journal_post_content {
+      margin-left: 2%;
+      font-size: 18px;
+      text-align: justify;
+    }
+}
