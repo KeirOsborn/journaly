@@ -58,12 +58,12 @@
 <script>
 var start_date= "<%=raw @trip.start_date  %>";
 var start_year=start_date.slice(0,4);
-var start_month=start_date.slice(5,7);
+var start_month=start_date.slice(5,7)-1;
 var start_day=start_date.slice(8,10);
 
 var end_date= "<%=raw @trip.end_date  %>";
 var end_year=end_date.slice(0,4);
-var end_month=end_date.slice(5,7);
+var end_month=end_date.slice(5,7)-1;
 var end_day=end_date.slice(8,10);
 
 var hello = start_date.datepicker
@@ -73,6 +73,10 @@ var hello = start_date.datepicker
 
 
 <script>
+      function noUnavailableDates(date) {
+        
+      }
+
       $(function() {
         $( "#from" ).datepicker({
           defaultDate: "+1w",
@@ -80,6 +84,9 @@ var hello = start_date.datepicker
           numberOfMonths: 1,
           minDate: new Date(start_year, start_month, start_day),
           maxDate: new Date(end_year, end_month, end_day),
+          constrainInput: true,
+          beforeShowDay: noUnavailableDates
+
 
           onClose: function( selectedDate ) {
             $( "#to" ).datepicker( "option", "minDate", selectedDate );

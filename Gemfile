@@ -62,6 +62,5 @@ group :test do
   gem 'launchy'
   gem 'poltergeist'
   gem 'rspec'
-  gem 'rspec-rails'
   gem 'jasmine'
 end
