@@ -16,4 +16,29 @@ class Trip < ActiveRecord::Base
 
   validates :name, :presence => true
   validates_date :end_date, :on_or_after => :start_date
+
+  def available_dates
+  	if !places.empty?
+  		available = (start_date...end_date)
+  		places.each do |place|
+  			place_dates = (place.start_date...place.end_date)
+  	 	  available = reject_dates_from(available, place_dates)
+      end
+  		return available
+    else
+  		return (start_date...end_date).to_a
+  	end
+  end
+
+  def taken_dates
+    places.map{|place| (place.start_date...place.end_date).to_a}.flatten.compact.uniq
+  end
+
+  def reject_dates_from(dates, dates_to_reject)
+    return dates.to_a.reject do |date|
+  			dates_to_reject.include? date 
+  	end
+  end
 end
+
+

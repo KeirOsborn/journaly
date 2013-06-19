@@ -22,5 +22,6 @@ class Place < ActiveRecord::Base
   belongs_to :previous_place, :class_name => "Place", :foreign_key => :previous_place_id
   has_one :next_place, :class_name => "Place", :foreign_key => :next_place_id
   validates :place, :presence => true
+
 end
 

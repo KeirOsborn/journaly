@@ -58,49 +58,57 @@
 <script>
 var start_date= "<%=raw @trip.start_date  %>";
 var start_year=start_date.slice(0,4);
-var start_month=start_date.slice(5,7);
+var start_month=start_date.slice(5,7)-1;
 var start_day=start_date.slice(8,10);
 
 var end_date= "<%=raw @trip.end_date  %>";
 var end_year=end_date.slice(0,4);
-var end_month=end_date.slice(5,7);
+var end_month=end_date.slice(5,7)-1;
 var end_day=end_date.slice(8,10);
 
-var hello = start_date.datepicker
+var disabledDays = <%=raw @taken_dates %>;
 
+function noTakenDays(date) {
+  var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+  //console.log('Checking (raw): ' + m + '-' + d + '-' + y);
+  for (i = 0; i < disabledDays.length; i++) {
+    if($.inArray((m+1) + '-' + d + '-' + y,disabledDays)  != -1 || new Date() > date) {
+      return [false];
+    }
+  }
+  return[true];
+}; 
 
-</script>
-
-
-<script>
-      $(function() {
+function unavailableDates(date) {
+  return noTakenDays(date)
+}
+$(function() {
         $( "#from" ).datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths: 1,
           minDate: new Date(start_year, start_month, start_day),
           maxDate: new Date(end_year, end_month, end_day),
+          dateFormat: 'DD, MM, d, yy',
+          constrainInput: true,
+          beforeShowDay: unavailableDates,
 
           onClose: function( selectedDate ) {
             $( "#to" ).datepicker( "option", "minDate", selectedDate );
             var sdate = $("#from" ).datepicker("getDate");
             $('#place_start_date').val(sdate);
+            
           }
 
         });
         $( "#to" ).datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths: 1,
           minDate: new Date(start_year, start_month, start_day),
           maxDate: new Date(end_year, end_month, end_day),
+          dateFormat: 'DD, MM, d, yy',
+          constrainInput: true,
+          beforeShowDay: unavailableDates,
 
           onClose: function( selectedDate ) {
             $( "#from" ).datepicker( "option", "maxDate", selectedDate );
             var edate = $("#to" ).datepicker("getDate");
             $('#place_end_date').val(edate);
-            var hello = $('#place_end_date').val();
-          console.log(hello);
           }
         });
       });

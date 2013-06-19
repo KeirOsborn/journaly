@@ -544,15 +544,28 @@ h6 {
 .btn.btn-primary {
   background-color: #1abc9c;
 }
-.btn.btn-primary:hover,
-.btn.btn-primary:focus,
-.btn-group:focus .btn.btn-primary.dropdown-toggle {
-  background-color: #48c9b0;
+.btn.btn-tertiary {
+  background-color: #ca5000;
 }
 .btn.btn-primary:active,
 .btn-group.open .btn.btn-primary.dropdown-toggle,
 .btn.btn-primary.active {
   background-color: #16a085;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn-group:focus .btn.btn-primary.dropdown-toggle {
+  background-color: #48c9b0;
+}
+.btn.btn-tertiary:active,
+.btn-group.open .btn.btn-tertiary.dropdown-toggle,
+.btn.btn-tertiary.active {
+  background-color: #16a085;
+}
+.btn.btn-tertiary:hover,
+.btn.btn-tertiary:focus,
+.btn-group:focus .btn.btn-tertiary.dropdown-toggle {
+  background-color: #48c9b0;
 }
 .btn.btn-info {
   background-color: #3498db;
