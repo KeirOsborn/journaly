@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   host: localhost
-  database: journaly_development
+  database: journaly
   pool: 5
   timeout: 5000
 
@@ -16,7 +16,7 @@ development:
 test: &test
   adapter: postgresql
   host: localhost
-  database: journaly_test
+  database: journaly
   pool: 5
   timeout: 5000
 
