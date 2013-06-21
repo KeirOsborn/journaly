@@ -7,9 +7,9 @@ gem 'rest-client'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
   gem 'pg'
-  gem 'oauth'
-  gem 'twitter'
-  gem 'grackle'
+#  gem 'oauth'
+#  gem 'twitter'
+#  gem 'grackle'
 
 
 

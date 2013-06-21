@@ -1,1 +1,20 @@
-<h1><%= @response %></h1>
+<section class="base-modal user-modal">
+  <header>
+    <h1></h1>
+  </header>
+  <section class="clear-fix trip-bar">
+      <header>
+        <h1>Your Instagram Photos</h1>
+      </header>
+    </section>
+    <br>
+    <h2 style="text-align:center">Click on an image below to add it to your place</h2>
+</section>
+
+
+<div class="instagram-photos">
+
+<% @images.each do |image| %>
+		<a href="/trips/<%=@trip.id%>/places/<%=@place.id%>/images/add/<%=image.id%>"><img src="<%= image.uri %>"/></a>
+<% end %>
+</div>

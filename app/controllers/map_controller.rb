@@ -9,6 +9,7 @@ class MapController < ApplicationController
 	end
 
 	def show
+		@user = User.find(session[:user])
 		@trip = Trip.find(params[:id])
 		@taken_dates = @trip.taken_dates.map{|date| date.strftime("%_m-%e-%Y").strip}
 		@tripId = params[:id]
@@ -18,6 +19,7 @@ class MapController < ApplicationController
 			@markerData << {"name"=> @place[placeId].place, "longitude"=> @place[placeId].longitude, "latitude"=> @place[placeId].latitude, "tripId"=> @tripId, "placeId"=> @place[placeId].id, "previous_place_id"=> @place[placeId].previous_place_id, "next_place_id"=> @place[placeId].next_place_id}
 		end
 		@markerData = @markerData.to_json
+		puts @markerData
 		respond_to do |format|
 			format.html
 			format.json {render json: @markerData}

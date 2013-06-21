@@ -1,0 +1,22 @@
+<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+
+<section class="clear-fix media-page">
+
+  <header class="media-page-header">
+    <section class="media-details">
+      <h1><%= @trip.name %> - <%= @place.place %></h1>
+    </section>
+    <nav>
+      <a class="btn btn-primary add-entry"><%= button_to "Add Photos to Journal", :action=>"add"%></a>
+    </nav>
+  </header>
+
+
+
+<h1>media</h1>
+
+
+	<% @images.each do |image| %>
+		<img src="<%= image.uri %>"/>
+	<% end %>
+

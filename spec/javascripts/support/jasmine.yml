@@ -11,7 +11,8 @@
 #   - dist/**/*.js
 #
 src_files:
-
+  - __spec__/helpers/js_testing.js
+#  - app/assets/javascripts/jquery-2.0.2.js
   - app/assets/javascripts/*.js
 
 # stylesheets
@@ -39,7 +40,7 @@ stylesheets:
 #   - helpers/**/*.js
 #
 helpers:
-  - helpers/**/*.js
+  - helpers/SpecHelper.js
 
 # spec_files
 #

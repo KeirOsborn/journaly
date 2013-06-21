@@ -3,11 +3,16 @@
 
     <section class="clear-fix place-bar">
         <%= form_for([@trip, @trip.places.build]) do |form| %>
-        <%- if @trip.places.length > 1 %> 
+
+        <%= form.error_messages :header_message => nil,
+          :message => "Please fix the following fields:",
+          :header_tag => :h3 %>
+
+        <%- if @trip.places.length > 1 %>
 
           <%= form.label :previous_place_id, 'Travelling from' %>
             <select id="prev_place" name='place[previous_place_id]'>
-              
+
               <% @trip.places.each do |place| %>
                 <%- if place.next_place_id == nil %>
                   <%- if @trip.places[-2].place == place.place %>
@@ -36,6 +41,9 @@
         </script>
         <%= form.label :place, 'Travelling to' %>
         <%= form.text_field :place, :placeholder => 'Travelling to', :id => id='searchTextField' %>
+        <%= form.text_field :start_date, :placeholder => 'Arrival date:', :id => id='from' %>
+        <%= form.text_field :end_date, :placeholder => 'Departure date:', :id => id='to' %>
+        <div id="datepicker"></div>
         <%= form.submit "add", :class => 'btn btn-block btn-primary', :id => 'add' %>
         <p class="notice"><%= flash[:error] %></p>
         <%= form.hidden_field :latitude, :placeholder => 'enter the latitude' %>
@@ -44,13 +52,13 @@
         <%= form.hidden_field :end_date %>
         <%= form.hidden_field :previous_place_id %>
       <% end %>
-        <section class="clear-fix ">
+        <!--<section class="clear-fix ">
           <label for="from">Arrival date:</label>
           <input type="text" id="from" name="from" placeholder="Arrival date"/>
           <label for="to">Departure date:</label>
           <input type="text" id="to" name="to" placeholder="Departure date"/>
-          <div id="datepicker"></div>
-        </section>
+
+        </section>-->
     </section>
   </article>
 
@@ -77,7 +85,7 @@ function noTakenDays(date) {
     }
   }
   return[true];
-}; 
+};
 
 function unavailableDates(date) {
   return noTakenDays(date)
@@ -94,7 +102,7 @@ $(function() {
             $( "#to" ).datepicker( "option", "minDate", selectedDate );
             var sdate = $("#from" ).datepicker("getDate");
             $('#place_start_date').val(sdate);
-            
+
           }
 
         });
@@ -128,7 +136,7 @@ $(function() {
       $('#place_longitude').val(longitude);
       $('#place_previous_place_id').val($('#prev_place').val());
     });
-    
+
   };
   google.maps.event.addDomListener(window, 'load', initialize);
   </script>

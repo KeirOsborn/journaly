@@ -1,5 +1,5 @@
 grouped = function(markerData){
-  var grouped =_.groupBy(window.markerData, function(place) {
+  var grouped =_.groupBy(markerData, function(place) {
       if(place.previous_place_id == null) {
         return 'start'
         }

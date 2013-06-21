@@ -6,8 +6,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(params[:user])
-    session[:user] = @user.id
-    redirect_to user_path(@user)
+      if @user.save
+        session[:user] = @user.id
+        redirect_to user_path(@user)
+      else render :new
+
+      end
+
   end
 
   def show

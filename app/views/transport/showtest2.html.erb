@@ -1,0 +1,119 @@
+<h1>transport show test</h1>
+<h1><%= params[:id] %></h1>
+<h1><%= @my_trip %></h1>
+
+<h3><%= @trip.places %></h3>
+
+<hr>
+
+<table border="2" bgcolor="white">
+			<tr>
+				<td><b>Start Number</b></td>
+				<% @start.each_index do |index| %>
+					<td style='text-align:center;width:250px;'><b><%= index + 1 %></b></td>
+				<% end %>
+			</tr>
+
+			<tr>
+				<td><b>Start Place</b></td>
+				<% @start.each do |place| %>
+					<td><%= place.place %></td>
+				<% end %>
+			</tr>
+
+			<tr>
+			<td><b></b></td>
+				<% @start.each do |place| %>
+					<td></td>
+				<% end %>
+			</tr>
+
+			<tr>
+			<%= @first_destination = [] %>
+			<td><b>First Destination</b></td>
+				<% @start.each do |place| %>
+					<td><%= @places.find(place.next_place_id).place %></td>
+					<%= @first_destination << @places.find(place.next_place_id) %>
+				<% end %>
+			</tr>
+
+			<tr>
+				<%= @second_destination = [] %>
+				<td><b>Second Destination</b></td>
+					<% if @first_destination != nil %>
+						<% @first_destination.each do |place| %>
+							<% if @places.find(place.next_place_id) != nil %>
+								<td><%= @places.find(place.next_place_id).place %></td>
+								<%= @second_destination << @places.find(place.next_place_id) %>
+							<% else %>
+								<td></td>
+							<% end %>
+						<% end %>
+					<% else %>
+						<td></td>
+					<% end %>
+			</tr>
+
+			<tr>
+				<%= @third_destination = [] %>
+					<td><b>Third Destination</b></td>
+					<% unless @second_destination == nil %>
+						<% @second_destination.each do |place| %>
+							<% if place.next_place_id != nil %>
+								<% if @places.find(place.next_place_id) != nil %>
+									<td><%= @places.find(place.next_place_id).place %></td>
+									<%= @third_destination << @places.find(place.next_place_id) %>
+								<% else %>
+									<td></td>
+								<% end %>
+							<% else %>
+								<td></td>
+							<% end %>
+						<% end %>
+					<% else %>
+						<td></td>
+					<% end %>
+			</tr>
+
+			<tr>
+			<%= @fourth_destination = [] %>
+			<td><b>Fourth Destination</b></td>
+			<% unless @third_destination == nil %>
+				<% @third_destination.each do |place| %>
+					<% if place.next_place_id != nil %>
+						<% if @places.find(place.next_place_id) != nil %>
+							<td><%= @places.find(place.next_place_id).place %></td>
+							<%= @forth_destination << @places.find(place.next_place_id) %>
+							<% else %>
+								<td></td>
+							<% end %>
+						<% else %>
+							<td></td>
+						<% end %>
+					<% end %>
+				<% else %>
+					<td></td>
+				<% end %>
+			</tr>
+
+			<tr>
+			<%= @fifth_destination = [] %>
+				<td><b>Fifth Destination</b></td>
+				<% if @forth_destination != nil %>
+					<% @forth_destination.each do |place| %>
+						<% if place.next_place_id != nil %>
+							<% if @places.find(place.next_place_id) != nil %>
+								<td><%= @places.find(place.next_place_id).place %></td>
+								<%= @fifth_destination << @places.find(place.next_place_id) %>
+							<% else %>
+								<td></td>
+							<% end %>
+						<% else %>
+							<td></td>
+						<% end %>
+					<% end %>
+				<% else %>
+					<td></td>
+				<% end %>
+			</tr>
+</table>

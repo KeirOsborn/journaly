@@ -76,10 +76,6 @@ GEM
     ffi (1.9.0)
     gherkin (2.12.0)
       multi_json (~> 1.3)
-    grackle (0.3.0)
-      json
-      mime-types
-      oauth
     hashie (2.0.5)
     hike (1.2.2)
     http_parser.rb (0.5.3)
@@ -109,7 +105,6 @@ GEM
     multi_json (1.7.6)
     multipart-post (1.2.0)
     nokogiri (1.5.9)
-    oauth (0.4.7)
     pg (0.15.1)
     poltergeist (1.3.0)
       capybara (~> 2.1.0)
@@ -169,7 +164,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
-    simple_oauth (0.2.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -181,10 +175,6 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
-    twitter (4.8.1)
-      faraday (~> 0.8, < 0.10)
-      multi_json (~> 1.0)
-      simple_oauth (~> 0.2)
     tzinfo (0.3.37)
     uglifier (2.1.1)
       execjs (>= 0.3.0)
@@ -207,12 +197,10 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   dynamic_form
-  grackle
   instagram
   jasmine
   jquery-rails
   launchy
-  oauth
   pg
   poltergeist
   rails (= 3.2.13)
@@ -221,6 +209,5 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   timeliness
-  twitter
   uglifier (>= 1.0.3)
   validates_timeliness

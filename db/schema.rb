@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618093908) do
+ActiveRecord::Schema.define(:version => 20130619175331) do
+
+  create_table "images", :force => true do |t|
+    t.string   "uri"
+    t.string   "caption"
+    t.integer  "place_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "images", ["place_id"], :name => "index_images_on_place_id"
 
   create_table "instagram_accounts", :force => true do |t|
     t.integer  "uid"
@@ -54,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20130618093908) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
+    t.string   "password"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"

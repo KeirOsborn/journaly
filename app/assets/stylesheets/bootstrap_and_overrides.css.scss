@@ -8,7 +8,7 @@ body, html {
 }
 
 body {
-  background: url(travel_journal.jpg) no-repeat center center;
+  background: url(travel_journal.jpg) center center;
   background-size: cover;
 }
 
@@ -31,4 +31,9 @@ body, .container-fluid {
   content: "";
   display: table;
   clear: both;
+}
+
+.btn-transport {
+  float: right;
+  font-color: #fff;
 }

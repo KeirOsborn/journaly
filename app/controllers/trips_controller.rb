@@ -1,10 +1,12 @@
 class TripsController < ApplicationController
 
   def new
+    @user = User.find(session[:user])
     @trip = Trip.new
   end
 
   def create
+    @user = User.find(session[:user])
     @trip = Trip.new(params[:trip])
     if @trip.save
       redirect_to map_path(@trip)

@@ -18,10 +18,15 @@
 class Place < ActiveRecord::Base
   attr_accessible :end_date, :latitude, :longitude, :place, :start_date, :previous_place_id, :next_place_id
   has_many :journal_entries
+  has_many :images
   belongs_to :trip
   belongs_to :previous_place, :class_name => "Place", :foreign_key => :previous_place_id
   has_one :next_place, :class_name => "Place", :foreign_key => :next_place_id
   validates :place, :presence => true
+
+	def next_places
+		 [place, next_place.place] unless next_place == nil
+	end
 
 end
 

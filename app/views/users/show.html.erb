@@ -1,19 +1,26 @@
-<section class="base-modal user-modal">
-  <header>
-    <h1>Welcome to Journaly</h1>
-    <p><span class="btn"><%= @user.name %> </span> you are going to love this app</p>
-  </header>
+
+
+  <section class="base-modal trip-modal">
   <section class="clear-fix trip-bar">
       <header>
-        <h2>Create a Trip</h2>
+        <h2>Create a Trip, <%= @user.name %>!</h2>
       </header>
         <%= form_for @trip do |form| %>
-        <%= form.text_field :name, :placeholder => 'now...create a trip' %>
+
+        <div>
+          <%= form.error_messages :header_message => nil,
+          :message => "Please fix the following fields:",
+          :header_tag => :h3 %>
+          <%= form.text_field :name, :placeholder => 'Name your trip' %>
         <p>Choose a start date</p>
         <%= form.date_select :start_date %>
-        <p>Choose an end date</p>
+
+        <p class="clearLeft">Choose an end date</p>
         <%= form.date_select :end_date %>
         <%= form.submit "create", :class => 'btn btn-block btn-info' %>
+      </div>
       <% end %>
     </section>
 </section>
+
+
