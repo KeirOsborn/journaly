@@ -14,16 +14,16 @@ class InstagramController < ApplicationController
     @place = @trip.places.find(place_id)
     session[:place_id] = place_id
     session[:trip_id] = trip_id
-    code = params['code']
+    token = params['token']
     user =  User.find(session[:user])
     begin
-      @response = RestClient.post 'https://api.instagram.com/oauth/access_token', { :code => code, :client_id => '5b67ff0b32434374a78613490678a851', :client_secret => 'cd22def96bb34ad3abc36c8f4be509d5', :grant_type => 'authorization_code', :redirect_uri => "#{request.protocol}#{request.host}:#{request.port}/instagram/link"}
-      puts @response
-      #@response = RestClient.get 'https://api.instagram.com/v1/users/24480272/media/recent/?access_token=24480272.f3c6d90.7eada26532fc4d8aa4ae408a904d5216'
+      #@response = RestClient.post 'https://api.instagram.com/oauth/access_token', { :code => code, :client_id => '5b67ff0b32434374a78613490678a851', :client_secret => 'cd22def96bb34ad3abc36c8f4be509d5', :grant_type => 'authorization_code', :redirect_uri => "#{request.protocol}#{request.host}:#{request.port}/instagram/link"}
+      #puts @response.inspect
+      @response = RestClient.get "https://api.instagram.com/v1/users/24480272/media/recent/?access_token=#{token}"
 
-      instagram = []# JSON.parse(@response)
+      instagram = JSON.parse(@response)
 
-      user.create_instagram_account(uid: instagram['user']['id'], token: instagram['access_token'])
+      #user.create_instagram_account(uid: instagram['user']['id'], token: instagram['access_token'])
 
       #@image = instagram[data]
 
