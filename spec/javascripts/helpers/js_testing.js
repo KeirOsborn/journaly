@@ -1,0 +1,1 @@
+document.write('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeLJnNUGtgDxQkx-5wrQR7YeY4-jd5sLI&libraries=geometry,places,panoramio&sensor=true" type="text/javascript"></script>');

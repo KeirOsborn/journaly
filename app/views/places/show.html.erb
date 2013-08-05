@@ -8,8 +8,11 @@
     </section>
 
     <nav>
-      <a class="btn btn-primary add-entry">Add Journal Entry</a>
-      <a class="btn btn-info add-photo">Add Photos</a>
+      <a class="btn btn-primary travel-map" href="/map/<%= @trip.id %>">Travel Map</a>
+      <a class="btn btn-info add-entry">Add Journal Entry</a>
+      <% if !User.find(session[:user]).instagram_account %>
+    <%= render :template => "instagram/show" %>
+<% end %>
     </nav>
   </header>
 
@@ -30,18 +33,12 @@
       <% end %>
     </article>
     <article class="photo-album-template">
-      <section class="photo-holder">
+      <% @place.images.each do |image| %>
+        <section class="photo-holder">
           <img src="/../masking_tape.png" class="tape-effect" />
-      </section>
-      <section class="photo-holder">
-          <img src="/../masking_tape.png" class="tape-effect" />
-      </section>
-      <section class="photo-holder">
-          <img src="/../masking_tape.png" class="tape-effect" />
-      </section>
-      <section class="photo-holder">
-          <img src="/../masking_tape.png" class="tape-effect" />
-      </section>
+          <img src="<%= image.uri %>" />
+        </section>
+      <% end %>
     </article>
   </section>
 </section>
@@ -55,3 +52,9 @@ $(document).ready(function(){
       });
   });
 </script>
+
+<!--
+<% if !User.find(session[:user]).instagram_account %>
+    <%= render :template => "instagram/show" %>
+<% end %>
+-->

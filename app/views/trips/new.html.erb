@@ -1,18 +1,21 @@
-  
-  
-  <article class="base-modal trip-modal">
-    <section class="clear-fix trip-bar">
+  <section class="base-modal trip-modal">
+  <section class="clear-fix trip-bar">
       <header>
-        <h2>Create a Trip</h2>
+        <h2>Create a Trip, <%= @user.name %>!</h2>
       </header>
-        <%= form_for (@trip) do |form| %>
-        <%= form.error_messages :header_message => nil,
+        <%= form_for @trip do |form| %>
+        <div>
+          <%= form.error_messages :header_message => nil,
           :message => "Please fix the following fields:",
           :header_tag => :h3 %>
-        <%= form.text_field :name, :placeholder => '...create a trip' %>
-				<%= form.date_select :start_date %>
-				<%= form.date_select :end_date %>
+          <%= form.text_field :name, :placeholder => 'Name your trip' %>
+        <p>Choose a start date</p>
+        <%= form.date_select :start_date, :order => [:day, :month, :year] %>
+
+        <p class="clearLeft">Choose an end date</p>
+        <%= form.date_select :end_date, :order => [:day, :month, :year] %>
         <%= form.submit "create", :class => 'btn btn-block btn-info' %>
+      </div>
       <% end %>
     </section>
-  </article>
+</section>

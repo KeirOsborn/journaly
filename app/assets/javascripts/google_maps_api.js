@@ -1,6 +1,6 @@
 // Google Maps API //
 
-  var markerData = $.parseJSON($("#markerData").text())
+
 
   window.markersOnMap = [];
 
@@ -51,4 +51,3 @@
     //  Fit these bounds to the map
     map.fitBounds (bounds);
   };
-  google.maps.event.addDomListener(window, 'load', initialize);

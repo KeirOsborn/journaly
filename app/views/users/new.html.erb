@@ -1,16 +1,28 @@
-  <article class="base-modal user-modal">
-    <section class="clear-fix trip-bar">
+
+  <body class="frontpage-image">
+  <section class="home-title">
+    Journaly
+  </section>
+      <article class="sign-up-form">
       <header>
-        <h2>Sign Up</h2>
+        Sign Up
       </header>
         <%= form_for @user do |form| %>
         <%= form.error_messages :header_message => nil,
           :message => "Please fix the following fields:",
           :header_tag => :h3 %>
+
+        <section class="form-field">
+
         <%= form.text_field :name, :placeholder => 'what is your first name?' %>
+        </section>
+        <section class="form-field">
         <%= form.password_field :password, :placeholder => 'choose a password' %>
+        </section>
+        <section class="form-field">
         <%= form.password_field :password_confirmation, :placeholder => 'please confirm your password' %>
-        <%= form.submit "sign up", :class => 'btn btn-block btn-info' %>
+        </section>
+        <%= form.submit "sign up", :class => 'btn btn-block btn-primary' %>
       <% end %>
-    </section>
-  </article>
+    </article>
+</body>

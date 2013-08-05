@@ -1,0 +1,52 @@
+<section class="base-modal user-modal">
+  <header>
+    <h1>Route Details</h1>
+  </header>
+  <section class="clear-fix trip-bar">
+      <header>
+        <h1>Destinations</h1>
+      </header>
+    </section>
+</section>
+
+<article class="base-modal user-modal">
+	<section class="clear-fix trip-bar">
+  <header>
+		<table class="curvedEdges"  border="2" bgcolor="#5dade2" align="center">
+	<% @linked_places.each do|place| %>
+			<tr>
+				<td><b><%= place %></b></td>
+			</tr>
+	<% end %>
+</table>
+</article>
+<br>
+
+<%- link = "" %>
+<%- @linked_places.each do|place| %>
+<%- link = link + place + '/'%>
+<%- end %>
+	</header>
+	</section>
+
+
+
+<br>
+
+
+
+
+<table width="500px" bgcolor="transparent" align="center" style= "text-align: center">
+			<tr>
+				<td class="route-header	"><a class="btn btn-alert" href="http://www.rome2rio.com/s/<%= link %>" target="myIframe"	>click here to search for transport routes!</a></td>
+			</tr>
+</table>
+
+
+<div style="width: 100%; height: 850px; overflow: hidden;">
+<iframe name="myIframe" style="position: relative; left: 0px; top: -100px" height="850" width="100%" hspace="10" vspace="10" align="middle">
+
+</iframe>
+
+</div>
+<br><br><br><br>

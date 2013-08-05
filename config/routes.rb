@@ -5,6 +5,10 @@ Journaly::Application.routes.draw do
   resources :trips do #gives the 7 restful routes #see rake routes
     resources :places do
       resources :journal_entries
+      match '/media' => 'instagram#media' , :via => :get
+      match '/media' => 'instagram#media' , :via => :post
+      match '/' => 'instagram#add' , :via => :post
+      match '/images/add/:id', to: 'instagram#add_image'
     end
   end
 
@@ -12,6 +16,11 @@ Journaly::Application.routes.draw do
     match 'user' => 'users#show'
   end
 
+  #resources :instagram
+  match 'instagram' => 'instagram#show' , :via => :get
+  match 'instagram/link' => 'instagram#link' , :via => :get
+  match 'instagram/media' => 'instagram#media' , :via => :get
+  match 'instagram/link' => 'instagram#add' , :via => :post
 
   resources :map do
     match 'map' => 'map#index'
@@ -21,8 +30,10 @@ Journaly::Application.routes.draw do
 
   resources :twitter do
     match 'twitter' => 'twitter#index'
-
   end
+
+  resources :transport
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614135635) do
+ActiveRecord::Schema.define(:version => 20130619175331) do
+
+  create_table "images", :force => true do |t|
+    t.string   "uri"
+    t.string   "caption"
+    t.integer  "place_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "images", ["place_id"], :name => "index_images_on_place_id"
+
+  create_table "instagram_accounts", :force => true do |t|
+    t.integer  "uid"
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "instagram_accounts", ["user_id"], :name => "index_instagram_accounts_on_user_id"
 
   create_table "journal_entries", :force => true do |t|
     t.string   "title"

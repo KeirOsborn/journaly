@@ -17,6 +17,11 @@ class Trip < ActiveRecord::Base
   validates :name, :presence => true
   validates_date :end_date, :on_or_after => :start_date
 
+
+  def linked_places
+  	places.map(&:next_places).flatten.uniq.compact
+  end
+
   def available_dates
   	if !places.empty?
   		available = (start_date...end_date)
@@ -36,7 +41,7 @@ class Trip < ActiveRecord::Base
 
   def reject_dates_from(dates, dates_to_reject)
     return dates.to_a.reject do |date|
-  			dates_to_reject.include? date 
+  			dates_to_reject.include? date
   	end
   end
 end

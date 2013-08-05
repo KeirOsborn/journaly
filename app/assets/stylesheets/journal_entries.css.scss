@@ -11,11 +11,13 @@
   #journal_entry_title {
     width: 96%;
     margin: 2%;
+    padding: 3%;
   }
 
   #journal_entry_post {
     margin: 2%;
     width: 96%;
+    height: 270px;
   }
 
   .btn-block {
@@ -30,7 +32,7 @@
     float: left;
     width: 48%;
     margin: 1%;
-    height: 253px;
+    height: 270px;
     background: url("journal-entry-background.png") center center;
     background-size: cover;
 
